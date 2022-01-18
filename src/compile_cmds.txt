@@ -1,0 +1,34 @@
+stamina's dump:
+
+These are the 4 full commands executed by the dynamicaly created Makefile
+for my libopencm3 Arm cortex-m4 projects:
+
+NOTE: debug info is only for the .elf, the firmware .bin will not contain
+that.
+
+NOTE: -specs=nano.specs and -lnosys means include the optimized nano newlib
+libraries and skip the big standard C libraries which makes no sense on an Arm
+Cortex.
+
+arm-none-eabi-gcc -DCM3_ASSERT_VERBOSE -Os -std=c99 -ggdb3 -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
+-fno-common -ffunction-sections -fdata-sections -Wextra -Wshadow -Wno-unused-variable -Wimplicit-function-declaration
+-Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes  -MD -Wall -Wundef -I. -I./include -I. -I./libopencm3/include
+-I. -I./include -I. -I./libopencm3/include  -DSTM32F4 -DSTM32F446RE -I./libopencm3/include -o bin/easy_debug.o -c ./include/easy_debug.c
+
+arm-none-eabi-gcc -DCM3_ASSERT_VERBOSE -Os -std=c99 -ggdb3 -mcpu=cortex-m4 -mthumb
+-mfloat-abi=hard -mfpu=fpv4-sp-d16 -fno-common -ffunction-sections -fdata-sections
+-Wextra -Wshadow -Wno-unused-variable -Wimplicit-function-declaration -Wredundant-decls
+-Wstrict-prototypes -Wmissing-prototypes  -MD -Wall -Wundef -I. -I./include
+-I. -I./libopencm3/include -I. -I./include -I. -I./libopencm3/include 
+-DSTM32F4 -DSTM32F446RE -I./libopencm3/include -o bin/easy_usart.o -c ./include/easy_usart.c
+
+arm-none-eabi-gcc -E -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
+-DSTM32F4 -DSTM32F446RE -D_ROM=512K -D_RAM=128K -D_ROM_OFF=0x08000000 -D_RAM_OFF=0x20000000
+-P -E libopencm3/ld/linker.ld.S -o generated.stm32f446re.ld
+
+arm-none-eabi-gcc -Tgenerated.stm32f446re.ld -L./libopencm3/lib -nostartfiles -mcpu=cortex-m4
+-mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nano.specs -Wl,--gc-sections
+-L./libopencm3/lib bin/easyrider.o bin/easy_clock.o bin/easy_debug.o bin/easy_usart.o
+-lopencm3_stm32f4 -Wl,--start-group -lc -lgcc -lnosys -Wl,--end-group -o easyrider.elf
+
+arm-none-eabi-objcopy -O binary  easyrider.elf easyrider.bin

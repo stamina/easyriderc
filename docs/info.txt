@@ -1,0 +1,476 @@
+*info.txt* easyrider rev C
+" vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly tw=0
+" Author: Bas Brugman
+" Website: www.visionnaire.nl
+
+EasyRider REV C
+---------------
+
+General functionality
+---------------------
+
+Nucleo Board:
+  regulators:
+  Linear LDO 5v -> max 1.3A load
+  Linear LDO 3.3v -> max 0.5A load
+
+EasyRelay board:
+  regulators:
+  Switching 5v -> max 1A load
+  Linear LDO 3.3v -> max 0.8A load
+  All relays switched on -> ~11x 33mA = ~350mA on 5V rail
+
+Setup after cutting off the ST-Link programming part:
+-----------------------------------------------------
+(see um1724-stm32-nucleo64-boards-mb1136-stmicroelectronics.pdf)
+  - power the ARM chip by feeding 5V into Morpho pin E5V (External 5V/CN7 header pin6)
+    (this basically skips the onboard U3 LD1117S50TR voltage regulator)
+  - set JP5 from U5V to E5V
+  NOTE: can still use the STLink debugger with E5V applied, just make sure
+  to FIRST connect the E5V voltage and after LD3 led lights up, connect the
+  USB cable.
+
+VBAT
+----
+
+VBAT is default connected to 3v3 via VDD.
+Remove jumper SB45 to connect to external battery.
+
+CRYSTAL X3
+----------
+HSE oscillator on-board from X3 crystal (not provided): for typical frequencies and
+its capacitors and resistors, refer to the STM32 microcontroller datasheet. Refer to the
+AN2867 Application note for oscillator design guide for STM32 microcontrollers.The X3
+crystal has the following characteristics: 8 MHz, 16 pF, 20 ppm, and DIP footprint. It is
+recommended to use 9SL8000016AFXHF0 manufactured by Hong Kong X'tals
+Limited.
+The following configuration is needed:
+–SB54 and SB55 OFF
+–R35 and R37 soldered
+–C33 and C34 soldered with 20 pF capacitors
+–SB16 and SB50 OFF
+
+The 32Khz RTC oscillator is connected to PC14/PC15, no PINOUTS to MORPHO.
+
+UART communication
+------------------
+PA2/PA3 (USART2 TX RX) is by default connected to the STLINK MCU for virtual
+com debugging support. Connect SB62/SB63 bridges for connections on the RIGHT
+MORPHO connector. Also Disconnect SB13/SB14 now.
+
+Blue Push button
+----------------
+Default connected to PC13 (remove SB17 jumper to remove the btn)
+
+User LED2 (LD2)
+---------------
+Default connected parallel to PA5 (remove SB21 jumper to remove the led)
+
+Ammeter measurement
+-------------------
+Put a meter between the JP6 pins to measure the current of the mcu.
+  
+Max power consumption board
+---------------------------
+
+  [X] STM32F446 MCU               -> 3.3v rail    ~100 mA max
+  [X] Bluetooth LE                -> 3.3v rail     ~10 mA max
+  [X] GPS                         -> 3.3v rail     ~30 mA max
+  [X] Relay switching             -> 5v rail      ~350 mA max
+  [X] Gyro / Accelerometer        -> 3.3v rail        3mA max
+                                                   ----------
+                                                  ~500 mA max
+Max power consumption relays
+----------------------------
+
+  [X] 12x Meder relay             -> 12v rail       ~3A max
+  [X] 1x Claxon relay             -> 12v rail     ~2.5A max
+                                                   --------
+                                                  ~5.5A max
+
+Overall changes/benefits compared to Rev B:
+
+-> Way more powerful -> Main board: STM32 Nucleo ARM Cortex 4 32bit mcu with Floating Point Unit
+-> Way easier debugging with SWD (Serial Wire Debug)
+-> Smaller form-factor size and more modular -> 2 detachable shields -> riser/daughter boards:
+   3x stack of 70mmx80mm boards, connected with double 2x19pin headers (76 pins total)
+-> EasyRelay board: PSU/Relay grid with connectors and 2x 16 port I/O expander IC's
+-> EasyComm boards: GPS/Bluetooth/IMU/Flash Storage/Sound(buzzer)
+    -> Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - Version 3
+    -> Adafruit LSM6DS33 + LIS3MDL - 9 DoF IMU with Accel / Gyro / Mag - STEMMA QT Qwiic
+    -> Adafruit Bluefruit LE SPI Friend - Bluetooth Low Energy (BLE)
+-> 4-layer board instead of 2-layer -> less noise, crosstalk
+-> Lower power -> most IC's at 3.3V, relay coils at 5V
+-> Lower power -> switching 5V Voltage Regulator instead of Linear
+-> Lower power -> deep sleep modes for most IC's
+-> Radio connectivity: Bluetooth LE low power instead of power-hungry Wifi
+-> Fast storage for settings/unique ID's/reboots etc. -> flash memory IC via QUAD SPI bus (using DUAL-SPI, only supported on STM 446 QFN64 model)
+-> New smaller molex connectors (Mini-Lock)
+-> More decoupling cap pads at longer traces
+-> Seperate 12V higher current wire for claxon relay
+-> Shift registers/IO expander IC before relays/darlington transitor arrays -> less pins needed on Cortex
+-> Shift registers/IO expander IC before input sense signals -> less pins needed on Cortex
+-> External Flash for logging  -> Winbond Quad SpiFlash automotive-grade
+   check -> https://www.winbond.com/productResource-files/DA05-0005.pdf
+   STM32's external memory interface named Quad-SPI: dm00227538-quadspi.pdf
+
+TODO/Functionality
+------------------
+
+[ ] Setup external HSE/LSE clocks for CPU/RTC
+[ ] Debug USART2 communication console
+    -> only events can be entered, same interface as the BLE module
+    -> events are handled by the cmd handlers
+[X] Test ADC for VBat/VAccu/VCurrent
+[X] Test default SysTick timer and set it up for general timing (info in PM0214 Programmer's Manual)
+[ ] Test VBAT functionality:
+    [ ] RTC/LSE osc data
+    [ ] RTC registers/RTC backup registers  
+    [ ] Backup SRAM for settings
+    [ ] PC13 (blue btn default connection) for future wakeup/sleep functionality
+[ ] Set all "F" (Unused pins) to Output push-pull and set internal pull-down
+[ ] I/O expanders over SPI1 (EXTI interrupt handling)
+[ ] Implement watchdog timer, which reset the MCU on (assert) hangs
+    -> Window watchdog? this one can be frozen while debugging
+[ ] New DEBOUNCE algorithm to handle all 2x 16 pins together in a buffer
+    [ ] Multiple reads after incoming interrupts
+[ ] Buzzer sounds
+[ ] Bluetooth communication
+[ ] GPS communication
+[ ] IMU communication
+[ ] Flash communication
+[ ] Extra state for braking hard/sudden stop/fall over certain degrees (read by accelerometer) -> 
+    activate hazard mode on (brake + light + indicators + claxon turn quickly on/off
+    for 3 times as a warning)
+[ ] Ignition on -> transition from IDLE to ACTIVE: some startup buzzer sounds and all relay lights on
+[ ] Ignition off -> transition from ACTIVE to IDLE: some buzzer sounds to notify of Engine off
+[ ] Logging -> on State Changes and/or 10 times per second gps/imu/stats dump,
+    throttle it in SRAM to be exact 10 rows/s, then write it to Winbond Flash
+[ ] Logging -> Log "records" to backup SRAM, besides settings:
+    max RPM, max SPEED, max deaccel/accel (G's), time to deaccel/accel to 60/80/100km/h,
+    longest active/idle time in sec
+
+
+General Event/Control System
+----------------------------
+
+[X] Superstates and Substates
+[X] Event pipeline handled in the super loop
+[X] Event handlers are direct cmd handlers
+[X] One process_events function in the super loop:
+    -> dispatches the whole event queue.
+    -> runs the guard functions and launches the correct cmds
+[ ] One process_cmds function in the super loop:
+    -> checks HW senses states, by reacting to I/O expander ISR's
+    -> does the debouncing algorithm for these ports
+    -> fires HW events
+    -> fires timed events based on current states (e.g. toggle warning lights,
+    buzzer sounds)
+    -> does housekeeping regarding setting up initialization/timers/interrupts
+    -> does housekeeping regarding GPS/BLE/IMU/Flash: setup, read/writes,
+       fires incoming SW events
+    -> sets the 2 status leds on the top shield
+[ ] Events are coming from these sources:
+    -> HW senses that changed (process_senses) generate them
+    -> incoming from BLE/USART terminal
+    -> Cmd Handlers that hard (re)cast events again
+[X] Only event handlers (cmds) can change state
+[X] Flush event pipeline function, event on and off handlers
+[X] Guard checks, event triggers and dispatch handlers  
+[X] HW/SW control uses the same events
+[X] Make a fixed "const" state/guard/dispatch table
+[ ] I/O expander interrupt handlers use 2 byte buffers (16 pins) to save and
+    check the state
+
+- 30 total pins (2x Mini-Lock Wire-to-Board Connectors, NOTE: 1A per pin max!):
+  - 15: RPM sense, all 13 switch senses and 1 RESERVE
+  - 15: 1xGND, 1x12V, 12x meder relays, 1x RESERVE (to JUMPER pin)
+  - 3pin TERMINAL: 12V in for all relays, 1 big claxon relay return path, 1x RESERVE
+
+  SWITCH SENSES
+  -------------
+  4x GEAR SENSE (1-4)
+  1x BREAK SENSE
+  1x RI SENSE
+  1x LI SENSE
+  1x CLAXON SENSE
+  1x PILOT LIGHT SENSE (S_PILOT)
+  1x MAIN (REAR) LIGHT SENSE (S_MAIN)
+  1x IGN SENSE
+  1x WARNING SENSE
+  1x ALARM SENSE
+  1x XTRA SENSE (S_XTRA1)
+
+  RELAYS (NOTE: layout relays wisely to seperate the ones that are ON alot) 
+  ------
+  1x BRAKE
+  1x CLAXON
+  1x PILOT 
+  1x LIGHT 
+  1x RIF LIGHT
+  1x RIB LIGHT
+  1x LIF LIGHT
+  1x LIB LIGHT
+  1x COCKPIT IND (PITIND)
+  1x COCKPIT STATUS (PITSTA)
+  3x XTRA RELAY (XTRA1-3_R)
+
+XTRA1_D connected to GPA4 on relay MCP23S17 IC to drive XTRA1 meder relay.
+XTRA2_D connected to GPA3 on relay MCP23S17 IC to drive XTRA2 meder relay.
+XTRA3_D connected to GPA1 on relay MCP23S17 IC to drive XTRA3 meder relay.
+  
+XTRA4_D connected to GPB6 on relay MCP23S17 IC and going to EasyComm MORPHO Connector.
+XTRA5_D connected to GPB7 on relay MCP23S17 IC and going to EasyComm MORPHO Connector.
+
+S_XTRA1 connected to GPA2 on senses MCP23S17 IC and going to EasyRELAY MOLEX Connector.
+
+S_XTRA2 connected to GPA1 on senses MCP23S17 IC and going to EasyComm MORPHO Connector.
+S_XTRA3 connected to GPA0 on senses MCP23S17 IC and going to EasyComm MORPHO Connector.
+
+Main board
+----------
+1x STM32F446 ARM Cortex M4 mcu (ST Nucleo board)
+
+Pinouts/Headers:
+                                                    --LEFT--                                    
+PC10 SPI3_SCK/QUADSPI_BK1_IO1/USART3_TX/UART4_TX  P [ 1][ 2] C    PC11 SPI3_MISO/QUADSPI_BK2_NCS/USART3_RX/UART4_RX                
+PC12 SPI3_MOSI/I2C2_SDA/USART3_CK/UART5_TX        C [ 3][ 4] C    PD2 UART5_RX                      
+VDD                                               I [ 5][ 6] I    E5V TO NUCLEO (5V FROM EASYRELAY)                                
+BOOT0                                             I [ 7][ 8] I    GND                               
+(XTRA4_D)                                         C [ 9][10] I    3V3 FROM EASYRELAY
+(XTRA5_D)                                         C [11][12] I    IOREF                             
+PA13 (TMS DEBUGGING)                              I [13][14] I    RESET (NRST)                            
+PA14 (TCK DEBUGGING)                              I [15][16] I    3V3 FROM NUCLEO
+PA15 SPI1_NSS/SPI3_NSS/UART4_RTS (JTDI DEBUGGING) F [17][18] I    5V FROM NUCLEO
+GND                                               I [19][20] I    GND                               
+PB7 I2C1_SDA/USART1_RX (PWM BUZZER TIM4_CH2)      C [21][22] I    GND                               
+PC13 (BLUE Push Btn default connected)            I [23][24] I    VIN                                  
+PC14 (32Khz crystal connected)                    I [25][26] X    NC
+PC15 (32Khz crystal connected)                    I [27][28] F    PA0 USART2_CTS/UART4_TX
+PH0 (X3 8Mhz crystal connected)                   I [29][30] C    PA1 QUADSPI_BK1_IO3/USART2_RTS/UART4_RX      
+PH1 (X3 8Mhz crystal connected)                   I [31][32] P    PA4 SPI1_NSS/SPI3_NSS/USART2_CK   
+VBAT                                              I [33][34] C    PB0 SPI3_MOSI/UART4_CTS                        
+PC2 SPI2_MISO                                     P [35][36] C    PC1 SPI2_MOSI/SPI3_MOSI                    
+PC3 SPI2_MOSI                                     P [37][38] C    PC0 VACCU ADC IN (ADC123_IN10)    
+
+                                                    --RIGHT-
+PC9 QUADSPI_BK1_IO0/I2C3_SDA/UART5_CTS            P [ 1][ 2] F    PC8 UART5_RTS/USART6_CK
+PB8 I2C1_SCL                                      P [ 3][ 4] F    PC6 FMPI2C1_SCL/USART6_TX
+PB9 SPI2_NSS/I2C1_SDA                             P [ 5][ 6] C    PC5 VCURRENT ADC IN (ADC12_IN15)/USART3_RX
+AVDD                                              I [ 7][ 8] I    U5V          
+GND                                               I [ 9][10] X    NC           
+PA5 SPI1_SCK (Default connected to LD2 LED)       P [11][12] F    PA12 USART1_RTS/CAN1_TX
+PA6 SPI1_MISO                                     P [13][14] F    PA11 USART1_CTS/CAN1_RX  
+PA7 SPI1_MOSI                                     P [15][16] P    PB12 SPI2_NSS/I2C2_SMBA/USART3_CK
+PB6 QUADSPI_BK1_NCS/I2C1_SCL/USART1_TX            P [17][18] X    NC
+PC7 SPI2_SCK/FMPI2C1_SDA/USART6_RX                C [19][20] I    GND          
+PA9 SPI2_SCK/I2C3_SMBA/USART1_TX                  P [21][22] P    PB2 SPI3_MOSI/QUADSPI_CLK
+PA8 I2C3_SCL/USART1_CK                            C [23][24] C    PB1 INT_SENSES          
+PB10 SPI2_SCK/I2C2_SCL                            C [25][26] C    PB15 SPI2_MOSI INT_RELAYS
+PB4 SPI1_MISO/SPI3_MISO/SPI2_NSS/I2C3_SDA/NJTRST  F [27][28] F    PB14 SPI2_MISO/USART3_RTS
+PB5 SPI1_MOSI/SPI3_MOSI/I2C1_SMBA                 C [29][30] P    PB13 SPI2_SCK/USART3_CTS
+PB3 SPI1_SCK/SPI3_SCK/I2C2_SDA (SWO DEBUGGING)    I [31][32] I    AGND (connected to GND by default)             
+PA10 USART1_RX                                    P [33][34] C    PC4 RPM_OUT (EXTI interrupt)              
+PA2 USART2_TX                                     I [35][36] C    (S_XTRA2)           
+PA3 USART2_RX                                     I [37][38] C    (S_XTRA3)          
+
+NOTE:
+P: peripheral
+I: internal use for Arm/STlink and power rails
+C: custom functionality pin (custom I/O for easyrider firmware) 
+X: Not Connected, no fanout from the Arm Cortex to the MORPHO connectors
+F: Free/Not Used (yet)
+  PA15: possibly future PWM2_CH1 timer
+  PA0: possibly future PWM2_CH1 timer
+  PC8: possibly future PWM3_CH3 timer
+  PC6: possibly future PWM3_CH1 timer
+  PA11: possibly future PWM1_CH4 timer
+  PB4: possibly future PWM3_CH1 timer
+  PB14: possibly future PWM1_CH2N timer
+AGND is connected to Arm VSSA, together with Arm VDDA this can be used as a
+seperate power rails for more finetuned ADC handling. Not using this feature.
+
+EXTx Interrupt PIN numbers usage: PB0, PB1, PC4, PB5, PA8, PC11, PB15
+
+For WINBOND FLASH use Dual SPI mode pins:
+QUADSPI_CLK (PB2) -> WINBOND PIN 6 CLK
+QUADSPI_BK1_IO0 (PC9) -> WINBOND PIN 5 DI 
+QUADSPI_BK1_IO1 (PC10) -> WINBOND PIN 2 DO
+QUADSPI_BK1_NCS (PB6) -> WINBOND PIN 1 /CS
+QUADSPI_BK1_IO3 (PA1) -> WINBOND PIN 7 /HOLD /RESET
+PB10 -> WINBOND PIN 3 -> /WP (Write Protect)
+
+For the I/O expander IC's on the EasyRelay board use:
+SPI1 -> SS (PA4), CLK (PA5), MISO (PA6), MOSI (PA7)
+2 INTERRUPTS -> INT_SENSES (PB1), INT_RELAYS (PB15) 
+
+For the bluetooth board on EasyComm use:
+SPI2 -> SS (PB12), CLK (PB13), MISO (PC2), MOSI (PC3) 
+INTERRUPT (IRQ) -> PC11
+RESET (RST) -> PD2
+
+For the IMU use the I2C pins:
+I2C1 -> I2C1_SDA (PB9), I2C1_SCL (PB8)
+INTERRUPTS: gyro/accel -> (I1) -> PB5
+            magnetometer -> (INTM) -> PA8
+
+For the GPS use the UART pins:
+NOTE: UART_TX (Arm side) goes to RX on slave boards!
+NOTE: UART_RX (Arm side) goes to TX on slave boards!
+USART1_RX (PA10), USART1_TX (PA9)
+PPS -> PB0
+ENABLE -> PC1
+
+2x STATUS LEDS:
+STATUS1 -> PC12
+STATUS1 -> PC7
+
+BUZZER: PWM on PB7
+
+ADC readouts:
+ [ ] VBAT pin (3v CR1225)
+ [ ] Current sensor (200mV/A readout)
+ [ ] 12V Battery
+
+EasyRelay board
+---------------
+12x Meder relays
+ [X] Keep 5mm distance between them, both axis
+2x MCP23S17 16-Bit SPI I/O Expander with SPI interface
+ [ ] maximum 10Mhz SPI 
+ [X] route remaining I/O pins to 7x "NC" MORPHO pins for the EasyComm connector
+2x ULN2003 darlington relay drivers
+1x 12V -> 5V Switching regulator circuit
+1x RPM sense circuit
+  [ ] connect output pulse to a COUNTER/INT PIN
+3v3 LDO regulator circuit (NOTE: big connection tab is Vout, not GND!)
+Hall effect current sensor
+
+NOTE: divide the relays across the 2 IC's, so the average current
+is evenly:
+
+1 -> PILOT, COCKPIT IND, BRAKE, RI's, CLAXON
+2 -> BACK LIGHT, COCKPIT STATUS, LI's
+
+NOTE: split the 12V and GND into 2 pairs each: 1 for high current claxon, 1 for other relays 
+
+External VBat 3V cr1225 -> 
+  to ARM for rtc and 4K SRAM backup
+  to GPS for sleep, warm instead of cold start
+
+[ ] Vbat voltage readout by ADC
+
+The voltage divider should be < 0.2x VBat ratio, so that even 
+  a charging battery at 15V will keep the ADC Vin below 3.3V.
+  100K - 20K resistors should be fine
+
+[ ] Hall effect current sensor readout by ADC
+  [ ] 200 mV/A
+
+EasyComm board
+--------------
+1x GPS module
+  - UART interface
+1x Bluetooth module
+  - SPI interface
+Breakout pins:
+  DFU: Setting this pin low when you power the device up will force the Bluefruit LE module
+  to enter a special firmware update mode to update the firmware over the air.
+  Once the device is powered up, this pin can also be used to perform a factory reset.
+  Wire the pin to GND for >5s until the two LEDs start to blink, then release the pin
+  (set it to 5V or logic high) and a factory reset will be performed.
+  RST: Holding this pin low then releasing it (or wiring it HIGH) will cause a system reset.
+1x IMU module
+  - I2C interface
+1x Flash IC
+  - DualSPI interface
+1x Piezo buzzer
+  - PWM signal input
+  - little transistor driver circuit
+2x STATUS leds
+
+Breakout pins:
+  S_XTRA2/S_XTRA3 2x senseMCP I/O headers
+  XTRA4_D/XTRA5_D 2x relayMCP I/O headers 
+  Bluetooth DFU pin -> jumper to GND, for factory reset/over-air-update
+  All 8x "F"ree MORPHO Connector pins
+
+STATUS LEDS:
+[ ] LED1_ST_CONT_ON 1
+    -> all systems operational, rdy for take-off
+    -> subsystem good: GPS, IMU, BLUETOOTH...
+[ ] LED1_ST_CONT_OFF 2
+[ ] LED1_ST_CONT_FAST 3
+[ ] LED1_ST_CONT_SLOW 4
+[ ] LED1_ST_INTERVAL_2_FAST 5
+[ ] LED1_ST_INTERVAL_2_SLOW 6
+[ ] LED1_ST_INTERVAL_3_FAST 7
+[ ] LED1_ST_INTERVAL_3_SLOW 8
+[ ] LED2_ST_CONT_ON 9
+    -> all systems operational, rdy for take-off
+    -> subsystem good: ADC, SENSES, RELAYS
+[ ] LED2_ST_CONT_OFF 10
+[ ] LED2_ST_CONT_FAST 11
+[ ] LED2_ST_CONT_SLOW 12
+[ ] LED2_ST_INTERVAL_2_FAST 13
+[ ] LED2_ST_INTERVAL_2_SLOW 14
+[ ] LED2_ST_INTERVAL_3_FAST 15
+[ ] LED2_ST_INTERVAL_3_SLOW 16
+
+MCU Hardfaults?  -> external oscillator failure (interrupt)
+
+Winbond flash:
+The W25Q256JV array is organized into 131,072 programmable pages of 256-bytes each. Up to 256
+bytes can be programmed at a time. Pages can be erased in groups of 16 (4KB sector erase), groups of
+128 (32KB block erase), groups of 256 (64KB block erase) or the entire chip (chip erase). The
+W25Q256JV has 8,192 erasable sectors and 512 erasable blocks respectively. The small 4KB sectors
+allow for greater flexibility in applications that require data and parameter storage.
+
+[ ] keep 1 permanent 4KB page for hw/sw config settings for Easyrider
+    -> # of boots
+    -> indicator light speed (normal/fast 0.5/0.25s on/off)
+    -> hw/sw versions
+    -> alarm time and triggers
+[ ] use/create a "wear-leveling" method to expand lifetime of flash
+[ ] Logging method:
+    - log 256 bytes -> 10 times/sec -> 2560 bytes/sec
+    - keep filling this in the STM32 SRAM until 64KB
+    - erase/write a full 4KB block to the winbond flash (4KB/2560B/sec -> every 1.6 seconds)
+    - there are a total of 512x 64KB blocks (511 for logs, 1 for settings)
+    - 218 mins of log recording until full, times 100k full erases/rewrites guaranteed (lifetime >41 years)
+
+Log data/format:
+page entry #, block entry #, RTC date/time, gps data, IMU data, state, command
+
+GPS:
+  [X] Pulse-Per-Second output -> synchronize to Arm
+  [X] rx/tx pins
+  [X] 3.3v pin + GND pin
+  [X] use VBAT pin for backup
+  [X] enable/disable pin (to save power)
+
+IMU:
+  [X] I2C + 2 interrupt pins
+
+Bluetooth:
+  [X] DFU pin -> jumper to GND, for factory reset/over-air-update
+  [X] SPI + IRQ + RESET
+
+Buzzer:
+ [X] Driving Circuit:
+     5v -> 2.7k resistor -> buzzer (2mA/90dBA) transistor collector
+     put a 1k and schottky parallel as snubber
+     3.3v PWM -> 330ohm base resistor (10 mA)
+
+Future ideas
+------------
+
+ [ ] Oil temperature readout with Thermistor
+ [ ] Fuel level readout
+ [ ] Voice messages/audio control
+ [ ] Rear/front cam module
+ [ ] FPGA/Proximity radar/laser sensors (traffic approach from behind)
+ [ ] Lora connectivity
+ [ ] Battery backed GSM module (4G) for tracking/theft protection
+
+EOF
