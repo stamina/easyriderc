@@ -1,0 +1,225 @@
+52409427920739
+stamina_footprints
+Adafruit_Bluetooth
+
+
+0
+11
+11
+stamina_footprints
+Adafruit_GPS
+
+
+0
+11
+11
+stamina_footprints
+Adafruit_IMU
+
+
+0
+10
+10
+stamina_footprints
+BatteryHolder_Renata SMTU1225-LF
+https://nl.mouser.com/datasheet/2/346/renas00003_1-2281228.pdf
+battery holder coin cell cr1225
+0
+2
+2
+stamina_footprints
+Buzzer_25.4mmPP
+https://nl.mouser.com/datasheet/2/252/PT_3110P_05Q-1520620.pdf
+buzzer PT-3110P-05Q
+0
+2
+2
+stamina_footprints
+CP_Radial_D10.0mm_P5.00mm
+CP, Radial series, Radial, pin pitch=5.00mm, , diameter=10mm, Electrolytic Capacitor
+CP Radial series Radial pin pitch 5.00mm  diameter 10mm Electrolytic Capacitor
+0
+2
+2
+stamina_footprints
+C_0603_1608Metric_Pad1.08x0.95mm_HandSolder
+Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+capacitor handsolder
+0
+2
+2
+stamina_footprints
+D_DO-15_P12.70mm_Horizontal
+Diode, DO-15 series, Axial, Horizontal, pin pitch=12.7mm, , length*diameter=7.6*3.6mm^2, , http://www.diodes.com/_files/packages/DO-15.pdf
+Diode DO-15 series Axial Horizontal pin pitch 12.7mm  length 7.6mm diameter 3.6mm
+0
+2
+2
+stamina_footprints
+D_SOD-323F
+SOD-323F https://nl.mouser.com/datasheet/2/916/PMEG2020EH_EJ-1599980.pdf
+SOD-323F
+0
+2
+2
+stamina_footprints
+EasyRider_logo1
+
+
+0
+0
+0
+stamina_footprints
+EasyRider_logo2
+
+
+0
+0
+0
+stamina_footprints
+Fuse_1206_3216Metric
+Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+fuse
+0
+2
+2
+stamina_footprints
+LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder
+LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator
+LED handsolder
+0
+2
+2
+stamina_footprints
+MEDER RELAY_CRR05-1A
+5V reed relay
+
+0
+10
+10
+stamina_footprints
+MolexMiniLock_1Ampere_1x15_P2.50mm
+https://www.molex.com/pdm_docs/sd/534261510_sd.pdf
+connector JST XA vertical boss
+0
+15
+15
+stamina_footprints
+MountingHole_3.2mm_M3
+Mounting Hole 3.2mm, no annular, M3
+mounting hole 3.2mm no annular m3
+0
+0
+0
+stamina_footprints
+PinHeader_1x01_P2.54mm_Vertical
+Through hole straight pin header, 1x01, 2.54mm pitch, single row
+Through hole pin header THT 1x01 2.54mm single row
+0
+1
+1
+stamina_footprints
+PinHeader_2x19_P2.54mm_Vertical
+Through hole straight pin header, 2x19, 2.54mm pitch, double rows Morpho connector
+Through hole pin header THT 2x19 2.54mm double row Morpho connector
+0
+38
+38
+stamina_footprints
+R_0603_1608Metric_Pad0.98x0.95mm_HandSolder
+Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor handsolder
+0
+2
+2
+stamina_footprints
+R_0805_2012Metric_Pad1.20x1.40mm_HandSolder
+Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor handsolder
+0
+2
+2
+stamina_footprints
+R_1206_3216Metric_Pad1.30x1.75mm_HandSolder
+Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator
+resistor handsolder
+0
+2
+2
+stamina_footprints
+Relay_SPST_Omron-G5NB-1A 5V coil, 12V switch 3Ampere
+https://nl.mouser.com/datasheet/2/307/en_g5nb-1112517.pdf
+Relay SPST-NO Omron claxon
+0
+4
+4
+stamina_footprints
+SMDIP-4_W9.53mm
+4-lead surface-mounted (SMD) DIP package, row spacing 9.53 mm (375 mils)
+SMD DIP DIL PDIP SMDIP 2.54mm 9.53mm 375mil
+0
+4
+4
+stamina_footprints
+SOIC-8_3.9x4.9mm_P1.27mm
+SOIC, 8 Pin (JEDEC MS-012AA, https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/soic_narrow-r/r_8.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SOIC SO
+0
+8
+8
+stamina_footprints
+SOT-23-5_HandSoldering
+5-pin SOT23 package
+SOT-23-5 hand-soldering
+0
+5
+5
+stamina_footprints
+SOT-23_3_HandSoldering
+3 pin SOT23
+SOT23
+0
+3
+3
+stamina_footprints
+SOT-223-3_TabPin2
+module CMS SOT223 4 pins
+CMS SOT
+0
+4
+3
+stamina_footprints
+SSOP-28_5.3x10.2mm_P0.65mm
+28-Lead Plastic Shrink Small Outline (SS)-5.30 mm Body [SSOP] (see Microchip Packaging Specification 00000049BS.pdf)
+SSOP 0.65
+0
+28
+28
+stamina_footprints
+ScrewTerminalBlock_3_P5.08mm
+simple 3-pin terminal block, pitch 5.08mm, revamped version of bornier3
+terminal block bornier3
+0
+3
+3
+stamina_footprints
+TSSOP16_ULN2003LV
+TSSOP, 16 Pin (JEDEC MO-153 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=MO-153), generated with kicad-footprint-generator ipc_gullwing_generator.py
+TSSOP SO
+0
+16
+16
+stamina_footprints
+WSON-8-8x6mm_P1.27mm
+
+WSON Flash
+0
+9
+9
+stamina_footprints
+WURTH-3PIN_FSDM_PACKAGE_TO-220-3_compatible
+TO-220-3, Vertical, RM 2.54mm Wurth
+TO-220-3 Vertical RM 2.54mm Wurth
+0
+3
+3

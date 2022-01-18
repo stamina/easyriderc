@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/stamina/Projects/hondac90/easyriderc/easycomm/easycomm.kicad_sch</source>
+    <date>Fri 10 Dec 2021 09:17:41 PM CET</date>
+    <tool>Eeschema (5.99.0-13294-g19fc8c6d98)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>EasyComm for EasyRider REV C</title>
+        <company>Bas Brugman visionnaire.nl</company>
+        <rev>REV A</rev>
+        <date>2021-12-06</date>
+        <source>easycomm.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="BZ1">
+      <value>Buzzer</value>
+      <footprint>stamina_footprints:Buzzer_25.4mmPP</footprint>
+      <datasheet>https://nl.mouser.com/datasheet/2/252/PT_3110P_05Q-1520620.pdf</datasheet>
+      <libsource lib="stamina_symbols" part="Buzzer" description="Buzzer, polarized"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>54203c2e-df6e-48c8-b349-bb5acacbc1fa</tstamps>
+    </comp>
+    <comp ref="C1">
+      <value>0.1uf</value>
+      <footprint>stamina_footprints:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b5dbd7d6-d40b-4929-b6d2-34af29b9bb00</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>D_Schottky</value>
+      <footprint>stamina_footprints:D_SOD-323F</footprint>
+      <datasheet>https://nl.mouser.com/datasheet/2/916/PMEG2020EH_EJ-1599980.pdf</datasheet>
+      <libsource lib="stamina_symbols" part="D_Schottky" description="Schottky diode"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a5b2c681-eb68-4422-ab15-1c7471c9331a</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>stamina_footprints:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="LED" description="Light emitting diode"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>11ac0bb2-a62d-4e4a-a946-81b0489e6320</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>LED</value>
+      <footprint>stamina_footprints:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="LED" description="Light emitting diode"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d67fc138-ffd8-49ae-b093-099a1b98f9cd</tstamps>
+    </comp>
+    <comp ref="H1">
+      <value>MountingHole</value>
+      <footprint>stamina_footprints:MountingHole_3.2mm_M3</footprint>
+      <libsource lib="" part="MountingHole_2" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>71fb2dc2-2915-4b16-b100-7ea85f3c55ee</tstamps>
+    </comp>
+    <comp ref="H2">
+      <value>MountingHole</value>
+      <footprint>stamina_footprints:MountingHole_3.2mm_M3</footprint>
+      <libsource lib="" part="MountingHole_1" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9fa38d7a-3d7c-4314-a8d0-6ff9426bc180</tstamps>
+    </comp>
+    <comp ref="H3">
+      <value>MountingHole</value>
+      <footprint>stamina_footprints:MountingHole_3.2mm_M3</footprint>
+      <libsource lib="" part="MountingHole_3" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e42fa591-8acb-474d-bb55-7697c22dadd5</tstamps>
+    </comp>
+    <comp ref="H4">
+      <value>MountingHole</value>
+      <footprint>stamina_footprints:MountingHole_3.2mm_M3</footprint>
+      <libsource lib="stamina_symbols" part="MountingHole" description="Mounting Hole without connection"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4d5be538-f3f9-4606-838d-d0ae2c4cc01b</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>RIGHT Morpho</value>
+      <footprint>stamina_footprints:PinHeader_2x19_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Morpho 2x19pin Connector" description="Generic connector, double row, 02x19, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4d27ca75-d2e2-461f-99b6-f8f6d78a1c2f</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>LEFT Morpho</value>
+      <footprint>stamina_footprints:PinHeader_2x19_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Morpho 2x19pin Connector" description="Generic connector, double row, 02x19, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a68b6985-c903-4551-be2b-441a216c1434</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cf1bcc1c-05bf-406b-9d7d-827afc0a753f</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>34c63fad-0d8a-4b8b-b2fe-a80463926aa1</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f1c0b2db-1ff9-40ab-b6f3-459cb24d9153</tstamps>
+    </comp>
+    <comp ref="J6">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cf1d7520-af89-45c7-ab9a-7fdad3b8fd50</tstamps>
+    </comp>
+    <comp ref="J7">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5343d3ef-4e54-4482-85b5-0a00d6ce357d</tstamps>
+    </comp>
+    <comp ref="J8">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d812b54b-ca2d-4cf3-b897-85f039e9a930</tstamps>
+    </comp>
+    <comp ref="J9">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2fb609f5-fac1-44ea-afa7-4589dffd9fbc</tstamps>
+    </comp>
+    <comp ref="J10">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fe859753-b5cf-4f0e-803a-236bb83d19d9</tstamps>
+    </comp>
+    <comp ref="J11">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6117a7fb-2d25-4f30-bb2a-044c745d3203</tstamps>
+    </comp>
+    <comp ref="J12">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bd983000-4ba2-4168-87f3-e63a43cc01b5</tstamps>
+    </comp>
+    <comp ref="J13">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>60444136-551a-488c-9de7-dc1a215684f0</tstamps>
+    </comp>
+    <comp ref="J14">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>77579b3d-c1f8-4ff7-b87c-896efab57416</tstamps>
+    </comp>
+    <comp ref="J15">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cec1e1a6-8c2f-45a8-8714-e354f53c431a</tstamps>
+    </comp>
+    <comp ref="J16">
+      <value>Conn_01x01</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="Conn_01x01" description="Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>15f9e779-0664-4e14-92bc-8d2bff373b13</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>NPN2222A</value>
+      <footprint>stamina_footprints:SOT-23_3_HandSoldering</footprint>
+      <datasheet>https://nl.mouser.com/datasheet/2/115/DIOD_S_A0011756665_1-2543625.pdf</datasheet>
+      <libsource lib="stamina_symbols" part="NPN2222A" description="40V NPN SMALL SIGNAL TRANSISTOR IN SOT23"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>346b4cb4-bbcd-4440-9fe8-4c4c63574942</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>2.7K</value>
+      <footprint>stamina_footprints:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b1cb028f-4dcf-415d-bb98-938beaabea5e</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>1K</value>
+      <footprint>stamina_footprints:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5ea41176-13fb-4161-889b-b56805808454</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>330</value>
+      <footprint>stamina_footprints:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4d03232c-de5c-44d7-887f-8932e3cef9a9</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>330</value>
+      <footprint>stamina_footprints:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8929a8d1-7e5d-4c94-9843-fdc478ad2b74</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>330</value>
+      <footprint>stamina_footprints:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="stamina_symbols" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00d237f4-de9c-4600-aae9-2431f6ab9628</tstamps>
+    </comp>
+    <comp ref="TP1">
+      <value>TestPoint</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>16805576-2961-4f6b-b2e1-e3802521d65f</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>TestPoint</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>392e758f-a65b-448e-9b6a-8ed27b92ceda</tstamps>
+    </comp>
+    <comp ref="TP3">
+      <value>TestPoint</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>94b8e160-10b0-4c06-8680-494a0179ecfb</tstamps>
+    </comp>
+    <comp ref="TP4">
+      <value>TestPoint</value>
+      <footprint>stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</footprint>
+      <libsource lib="stamina_symbols" part="TestPoint" description="test point"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>95374c20-99b3-4d9e-bf96-c2c6f04f4a3b</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>Adafruit_Bluetooth</value>
+      <footprint>stamina_footprints:Adafruit_Bluetooth</footprint>
+      <datasheet>https://www.adafruit.com/product/2633</datasheet>
+      <libsource lib="stamina_symbols" part="Adafruit_Bluetooth" description="Adafruit Bluefruit LE SPI Friend - Bluetooth Low Energy (BLE)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>261d1017-bda8-48b1-a7b7-1c6ad03d28e5</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>Adafruit_GPS</value>
+      <footprint>stamina_footprints:Adafruit_GPS</footprint>
+      <datasheet>https://www.adafruit.com/product/746</datasheet>
+      <libsource lib="stamina_symbols" part="Adafruit_GPS" description="Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - Version 3"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7eed80f4-733e-4357-86db-14ad606a4588</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>Adafruit_IMU</value>
+      <footprint>stamina_footprints:Adafruit_IMU</footprint>
+      <datasheet>https://www.adafruit.com/product/4485</datasheet>
+      <libsource lib="stamina_symbols" part="Adafruit_IMU" description="Adafruit LSM6DS33 + LIS3MDL - 9 DoF IMU with Accel / Gyro / Mag - STEMMA QT Qwiic"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>55cba51b-8802-4a9a-ab09-ec6d4499f257</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>W25Q256JV</value>
+      <footprint>stamina_footprints:WSON-8-8x6mm_P1.27mm</footprint>
+      <datasheet>https://nl.mouser.com/datasheet/2/949/w25q256jv_spi_revg_08032017-1489574.pdf</datasheet>
+      <libsource lib="stamina_symbols" part="W25Q256JV" description="256Mb Serial Flash Memory, Standard/Dual/Quad SPI"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="easycomm.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>022d839d-35c4-4d11-9d76-eb7f0756e612</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="" part="MountingHole_1">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole_1</field>
+        <field name="Footprint">stamina_footprints:MountingHole_3.2mm_M3</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="" part="MountingHole_2">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole_2</field>
+        <field name="Footprint">stamina_footprints:MountingHole_3.2mm_M3</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="" part="MountingHole_3">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole_3</field>
+        <field name="Footprint">stamina_footprints:MountingHole_3.2mm_M3</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="stamina_symbols" part="Adafruit_Bluetooth">
+      <description>Adafruit Bluefruit LE SPI Friend - Bluetooth Low Energy (BLE)</description>
+      <docs>https://www.adafruit.com/product/2633</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Adafruit_Bluetooth</field>
+        <field name="Footprint">stamina_footprints:Adafruit_Bluetooth</field>
+        <field name="Datasheet">https://www.adafruit.com/product/2633</field>
+      </fields>
+      <pins>
+        <pin num="1" name="CLK" type="bidirectional"/>
+        <pin num="2" name="MISO" type="bidirectional"/>
+        <pin num="3" name="MOSI" type="bidirectional"/>
+        <pin num="4" name="CS" type="bidirectional"/>
+        <pin num="5" name="IRQ" type="bidirectional"/>
+        <pin num="6" name="DFU" type="bidirectional"/>
+        <pin num="7" name="RST" type="bidirectional"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="VIN" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="Adafruit_GPS">
+      <description>Adafruit Ultimate GPS Breakout - 66 channel w/10 Hz updates - Version 3</description>
+      <docs>https://www.adafruit.com/product/746</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Adafruit_GPS</field>
+        <field name="Footprint">stamina_footprints:Adafruit_GPS</field>
+        <field name="Datasheet">https://www.adafruit.com/product/746</field>
+      </fields>
+      <pins>
+        <pin num="1" name="3VOUT" type="power_out"/>
+        <pin num="2" name="ENABLE" type="bidirectional"/>
+        <pin num="3" name="VBAT" type="power_in"/>
+        <pin num="4" name="FIX" type="bidirectional"/>
+        <pin num="5" name="TX" type="output"/>
+        <pin num="6" name="RX" type="input"/>
+        <pin num="7" name="GND" type="power_in"/>
+        <pin num="8" name="VIN" type="power_in"/>
+        <pin num="9" name="PPS" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="Adafruit_IMU">
+      <description>Adafruit LSM6DS33 + LIS3MDL - 9 DoF IMU with Accel / Gyro / Mag - STEMMA QT Qwiic</description>
+      <docs>https://www.adafruit.com/product/4485</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Adafruit_IMU</field>
+        <field name="Footprint">stamina_footprints:Adafruit_IMU</field>
+        <field name="Datasheet">https://www.adafruit.com/product/4485</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Vin" type="power_in"/>
+        <pin num="2" name="Vout" type="power_out"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="SCL" type="bidirectional"/>
+        <pin num="5" name="SDA" type="bidirectional"/>
+        <pin num="6" name="INTM" type="bidirectional"/>
+        <pin num="7" name="DRDY" type="bidirectional"/>
+        <pin num="8" name="ADM" type="bidirectional"/>
+        <pin num="9" name="INT1" type="bidirectional"/>
+        <pin num="10" name="AGAD" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="Buzzer">
+      <description>Buzzer, polarized</description>
+      <docs>https://nl.mouser.com/datasheet/2/252/PT_3110P_05Q-1520620.pdf</docs>
+      <footprints>
+        <fp>*Buzzer*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">BZ</field>
+        <field name="Value">Buzzer</field>
+        <field name="Footprint">stamina_footprints:Buzzer_25.4mmPP</field>
+        <field name="Datasheet">https://nl.mouser.com/datasheet/2/252/PT_3110P_05Q-1520620.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="-" type="passive"/>
+        <pin num="2" name="+" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="Conn_01x01">
+      <description>Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x01</field>
+        <field name="Footprint">stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="D_Schottky">
+      <description>Schottky diode</description>
+      <docs>https://nl.mouser.com/datasheet/2/916/PMEG2020EH_EJ-1599980.pdf</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Schottky</field>
+        <field name="Footprint">stamina_footprints:D_SOD-323F</field>
+        <field name="Datasheet">https://nl.mouser.com/datasheet/2/916/PMEG2020EH_EJ-1599980.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+        <field name="Footprint">stamina_footprints:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="Morpho 2x19pin Connector">
+      <description>Generic connector, double row, 02x19, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_2x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Morpho 2x19pin Connector</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+        <pin num="11" name="Pin_11" type="passive"/>
+        <pin num="12" name="Pin_12" type="passive"/>
+        <pin num="13" name="Pin_13" type="passive"/>
+        <pin num="14" name="Pin_14" type="passive"/>
+        <pin num="15" name="Pin_15" type="passive"/>
+        <pin num="16" name="Pin_16" type="passive"/>
+        <pin num="17" name="Pin_17" type="passive"/>
+        <pin num="18" name="Pin_18" type="passive"/>
+        <pin num="19" name="Pin_19" type="passive"/>
+        <pin num="20" name="Pin_20" type="passive"/>
+        <pin num="21" name="Pin_21" type="passive"/>
+        <pin num="22" name="Pin_22" type="passive"/>
+        <pin num="23" name="Pin_23" type="passive"/>
+        <pin num="24" name="Pin_24" type="passive"/>
+        <pin num="25" name="Pin_25" type="passive"/>
+        <pin num="26" name="Pin_26" type="passive"/>
+        <pin num="27" name="Pin_27" type="passive"/>
+        <pin num="28" name="Pin_28" type="passive"/>
+        <pin num="29" name="Pin_29" type="passive"/>
+        <pin num="30" name="Pin_30" type="passive"/>
+        <pin num="31" name="Pin_31" type="passive"/>
+        <pin num="32" name="Pin_32" type="passive"/>
+        <pin num="33" name="Pin_33" type="passive"/>
+        <pin num="34" name="Pin_34" type="passive"/>
+        <pin num="35" name="Pin_35" type="passive"/>
+        <pin num="36" name="Pin_36" type="passive"/>
+        <pin num="37" name="Pin_37" type="passive"/>
+        <pin num="38" name="Pin_38" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Footprint">stamina_footprints:MountingHole_3.2mm_M3</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="stamina_symbols" part="NPN2222A">
+      <description>40V NPN SMALL SIGNAL TRANSISTOR IN SOT23</description>
+      <docs>https://nl.mouser.com/datasheet/2/115/DIOD_S_A0011756665_1-2543625.pdf</docs>
+      <footprints>
+        <fp>TO?92*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">NPN2222A</field>
+        <field name="Footprint">stamina_footprints:SOT-23_3_HandSoldering</field>
+        <field name="Datasheet">https://nl.mouser.com/datasheet/2/115/DIOD_S_A0011756665_1-2543625.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Footprint">stamina_footprints:PinHeader_1x01_P2.54mm_Vertical</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="stamina_symbols" part="W25Q256JV">
+      <description>256Mb Serial Flash Memory, Standard/Dual/Quad SPI</description>
+      <docs>https://nl.mouser.com/datasheet/2/949/w25q256jv_spi_revg_08032017-1489574.pdf</docs>
+      <footprints>
+        <fp>SOIC*5.23x5.23mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">W25Q256JV</field>
+        <field name="Footprint">stamina_footprints:WSON-8-8x6mm_P1.27mm</field>
+        <field name="Datasheet">https://nl.mouser.com/datasheet/2/949/w25q256jv_spi_revg_08032017-1489574.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~{CS}" type="input"/>
+        <pin num="2" name="DO(IO1)" type="bidirectional"/>
+        <pin num="3" name="IO2/WP" type="bidirectional"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="DI(IO0)" type="bidirectional"/>
+        <pin num="6" name="CLK" type="input"/>
+        <pin num="7" name="IO3/HOLD/RESET" type="bidirectional"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="stamina_symbols">
+      <uri>/home/stamina/Projects/kicad/libraries/stamina-symbols/stamina_symbols.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="J2" pin="10" pinfunction="Pin_10" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="9" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U2" pin="8" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U3" pin="1" pinfunction="Vin" pintype="power_in"/>
+      <node ref="U4" pin="8" pinfunction="VCC" pintype="power_in"/>
+    </net>
+    <net code="2" name="+5V">
+      <node ref="J2" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="3" name="/BLE_CLK">
+      <node ref="J1" pin="30" pinfunction="Pin_30" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="CLK" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/BLE_CS">
+      <node ref="J1" pin="16" pinfunction="Pin_16" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="CS" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/BLE_IRQ">
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="IRQ" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/BLE_MISO">
+      <node ref="J2" pin="35" pinfunction="Pin_35" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="MISO" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/BLE_MOSI">
+      <node ref="J2" pin="37" pinfunction="Pin_37" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="MOSI" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="/BLE_RST">
+      <node ref="J2" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="U1" pin="7" pinfunction="RST" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="/BUZZ">
+      <node ref="J2" pin="21" pinfunction="Pin_21" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="10" name="/DFU">
+      <node ref="J7" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="DFU" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="/FLASH_CLK">
+      <node ref="J1" pin="22" pinfunction="Pin_22" pintype="passive"/>
+      <node ref="U4" pin="6" pinfunction="CLK" pintype="input"/>
+    </net>
+    <net code="12" name="/FLASH_CS">
+      <node ref="J1" pin="17" pinfunction="Pin_17" pintype="passive"/>
+      <node ref="U4" pin="1" pinfunction="~{CS}" pintype="input"/>
+    </net>
+    <net code="13" name="/FLASH_IO0">
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U4" pin="5" pinfunction="DI(IO0)" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="/FLASH_IO1">
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U4" pin="2" pinfunction="DO(IO1)" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="/FLASH_RESET">
+      <node ref="J2" pin="30" pinfunction="Pin_30" pintype="passive"/>
+      <node ref="U4" pin="7" pinfunction="IO3/HOLD/RESET" pintype="bidirectional"/>
+    </net>
+    <net code="16" name="/FLASH_WP">
+      <node ref="J1" pin="25" pinfunction="Pin_25" pintype="passive"/>
+      <node ref="U4" pin="3" pinfunction="IO2/WP" pintype="bidirectional"/>
+    </net>
+    <net code="17" name="/GPS_ENABLE">
+      <node ref="J2" pin="36" pinfunction="Pin_36" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="ENABLE" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="/IMU_INT1">
+      <node ref="J1" pin="29" pinfunction="Pin_29" pintype="passive"/>
+      <node ref="U3" pin="9" pinfunction="INT1" pintype="bidirectional"/>
+    </net>
+    <net code="19" name="/IMU_SCL">
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="SCL" pintype="bidirectional"/>
+    </net>
+    <net code="20" name="/IMU_SDA">
+      <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="U3" pin="5" pinfunction="SDA" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="/INTM">
+      <node ref="J1" pin="23" pinfunction="Pin_23" pintype="passive"/>
+      <node ref="U3" pin="6" pinfunction="INTM" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="/LED_STATUS1">
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+    </net>
+    <net code="23" name="/LED_STATUS2">
+      <node ref="J1" pin="19" pinfunction="Pin_19" pintype="passive"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+    </net>
+    <net code="24" name="/PA0">
+      <node ref="J10" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J2" pin="28" pinfunction="Pin_28" pintype="passive"/>
+    </net>
+    <net code="25" name="/PA11">
+      <node ref="J1" pin="14" pinfunction="Pin_14" pintype="passive"/>
+      <node ref="J14" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="26" name="/PA12">
+      <node ref="J1" pin="12" pinfunction="Pin_12" pintype="passive"/>
+      <node ref="J13" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="27" name="/PA15">
+      <node ref="J2" pin="17" pinfunction="Pin_17" pintype="passive"/>
+      <node ref="J9" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="28" name="/PB4">
+      <node ref="J1" pin="27" pinfunction="Pin_27" pintype="passive"/>
+      <node ref="J15" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="29" name="/PB14">
+      <node ref="J1" pin="28" pinfunction="Pin_28" pintype="passive"/>
+      <node ref="J16" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="30" name="/PC6">
+      <node ref="J1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J12" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="31" name="/PC8">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J11" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="32" name="/PPS">
+      <node ref="J2" pin="34" pinfunction="Pin_34" pintype="passive"/>
+      <node ref="U2" pin="9" pinfunction="PPS" pintype="bidirectional"/>
+    </net>
+    <net code="33" name="/RX_TX">
+      <node ref="J1" pin="21" pinfunction="Pin_21" pintype="passive"/>
+      <node ref="U2" pin="6" pinfunction="RX" pintype="input"/>
+    </net>
+    <net code="34" name="/S_XTRA2">
+      <node ref="J1" pin="36" pinfunction="Pin_36" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="35" name="/S_XTRA3">
+      <node ref="J1" pin="38" pinfunction="Pin_38" pintype="passive"/>
+      <node ref="J6" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="36" name="/TX_RX">
+      <node ref="J1" pin="33" pinfunction="Pin_33" pintype="passive"/>
+      <node ref="U2" pin="5" pinfunction="TX" pintype="output"/>
+    </net>
+    <net code="37" name="/VBAT">
+      <node ref="J2" pin="33" pinfunction="Pin_33" pintype="passive"/>
+      <node ref="U2" pin="3" pinfunction="VBAT" pintype="power_in"/>
+    </net>
+    <net code="38" name="/XTRA4_D">
+      <node ref="J2" pin="9" pinfunction="Pin_9" pintype="passive"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="39" name="/XTRA5_D">
+      <node ref="J2" pin="11" pinfunction="Pin_11" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    </net>
+    <net code="40" name="GND">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J1" pin="20" pinfunction="Pin_20" pintype="passive"/>
+      <node ref="J1" pin="9" pinfunction="Pin_9" pintype="passive"/>
+      <node ref="J2" pin="19" pinfunction="Pin_19" pintype="passive"/>
+      <node ref="J2" pin="20" pinfunction="Pin_20" pintype="passive"/>
+      <node ref="J2" pin="22" pinfunction="Pin_22" pintype="passive"/>
+      <node ref="J2" pin="8" pinfunction="Pin_8" pintype="passive"/>
+      <node ref="J8" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="Q1" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="8" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="7" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U4" pin="4" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="41" name="Net-(BZ1-Pad1)">
+      <node ref="BZ1" pin="1" pinfunction="-" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+    </net>
+    <net code="42" name="Net-(BZ1-Pad2)">
+      <node ref="BZ1" pin="2" pinfunction="+" pintype="passive"/>
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+    </net>
+    <net code="43" name="Net-(D2-Pad2)">
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+    </net>
+    <net code="44" name="Net-(D3-Pad2)">
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+    </net>
+    <net code="45" name="Net-(Q1-Pad1)">
+      <node ref="Q1" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+    </net>
+    <net code="46" name="unconnected-(J1-Pad6)">
+      <node ref="J1" pin="6" pinfunction="Pin_6" pintype="passive+no_connect"/>
+    </net>
+    <net code="47" name="unconnected-(J1-Pad7)">
+      <node ref="J1" pin="7" pinfunction="Pin_7" pintype="passive+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(J1-Pad8)">
+      <node ref="J1" pin="8" pinfunction="Pin_8" pintype="passive+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(J1-Pad10)">
+      <node ref="J1" pin="10" pinfunction="Pin_10" pintype="passive+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(J1-Pad11)">
+      <node ref="J1" pin="11" pinfunction="Pin_11" pintype="passive+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(J1-Pad13)">
+      <node ref="J1" pin="13" pinfunction="Pin_13" pintype="passive+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(J1-Pad15)">
+      <node ref="J1" pin="15" pinfunction="Pin_15" pintype="passive+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(J1-Pad18)">
+      <node ref="J1" pin="18" pinfunction="Pin_18" pintype="passive+no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(J1-Pad24)">
+      <node ref="J1" pin="24" pinfunction="Pin_24" pintype="passive+no_connect"/>
+    </net>
+    <net code="55" name="unconnected-(J1-Pad26)">
+      <node ref="J1" pin="26" pinfunction="Pin_26" pintype="passive+no_connect"/>
+    </net>
+    <net code="56" name="unconnected-(J1-Pad31)">
+      <node ref="J1" pin="31" pinfunction="Pin_31" pintype="passive+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(J1-Pad32)">
+      <node ref="J1" pin="32" pinfunction="Pin_32" pintype="passive+no_connect"/>
+    </net>
+    <net code="58" name="unconnected-(J1-Pad34)">
+      <node ref="J1" pin="34" pinfunction="Pin_34" pintype="passive+no_connect"/>
+    </net>
+    <net code="59" name="unconnected-(J1-Pad35)">
+      <node ref="J1" pin="35" pinfunction="Pin_35" pintype="passive+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(J1-Pad37)">
+      <node ref="J1" pin="37" pinfunction="Pin_37" pintype="passive+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(J2-Pad5)">
+      <node ref="J2" pin="5" pinfunction="Pin_5" pintype="passive+no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(J2-Pad7)">
+      <node ref="J2" pin="7" pinfunction="Pin_7" pintype="passive+no_connect"/>
+    </net>
+    <net code="63" name="unconnected-(J2-Pad12)">
+      <node ref="J2" pin="12" pinfunction="Pin_12" pintype="passive+no_connect"/>
+    </net>
+    <net code="64" name="unconnected-(J2-Pad13)">
+      <node ref="J2" pin="13" pinfunction="Pin_13" pintype="passive+no_connect"/>
+    </net>
+    <net code="65" name="unconnected-(J2-Pad14)">
+      <node ref="J2" pin="14" pinfunction="Pin_14" pintype="passive+no_connect"/>
+    </net>
+    <net code="66" name="unconnected-(J2-Pad15)">
+      <node ref="J2" pin="15" pinfunction="Pin_15" pintype="passive+no_connect"/>
+    </net>
+    <net code="67" name="unconnected-(J2-Pad16)">
+      <node ref="J2" pin="16" pinfunction="Pin_16" pintype="passive+no_connect"/>
+    </net>
+    <net code="68" name="unconnected-(J2-Pad18)">
+      <node ref="J2" pin="18" pinfunction="Pin_18" pintype="passive+no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(J2-Pad23)">
+      <node ref="J2" pin="23" pinfunction="Pin_23" pintype="passive+no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(J2-Pad24)">
+      <node ref="J2" pin="24" pinfunction="Pin_24" pintype="passive+no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(J2-Pad25)">
+      <node ref="J2" pin="25" pinfunction="Pin_25" pintype="passive+no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(J2-Pad26)">
+      <node ref="J2" pin="26" pinfunction="Pin_26" pintype="passive+no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(J2-Pad27)">
+      <node ref="J2" pin="27" pinfunction="Pin_27" pintype="passive+no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(J2-Pad29)">
+      <node ref="J2" pin="29" pinfunction="Pin_29" pintype="passive+no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(J2-Pad31)">
+      <node ref="J2" pin="31" pinfunction="Pin_31" pintype="passive+no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(J2-Pad32)">
+      <node ref="J2" pin="32" pinfunction="Pin_32" pintype="passive+no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(J2-Pad38)">
+      <node ref="J2" pin="38" pinfunction="Pin_38" pintype="passive+no_connect"/>
+    </net>
+    <net code="78" name="unconnected-(U2-Pad1)">
+      <node ref="U2" pin="1" pinfunction="3VOUT" pintype="power_out+no_connect"/>
+    </net>
+    <net code="79" name="unconnected-(U2-Pad4)">
+      <node ref="U2" pin="4" pinfunction="FIX" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="80" name="unconnected-(U3-Pad2)">
+      <node ref="U3" pin="2" pinfunction="Vout" pintype="power_out+no_connect"/>
+    </net>
+    <net code="81" name="unconnected-(U3-Pad7)">
+      <node ref="U3" pin="7" pinfunction="DRDY" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="82" name="unconnected-(U3-Pad8)">
+      <node ref="U3" pin="8" pinfunction="ADM" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="83" name="unconnected-(U3-Pad10)">
+      <node ref="U3" pin="10" pinfunction="AGAD" pintype="bidirectional+no_connect"/>
+    </net>
+  </nets>
+</export>

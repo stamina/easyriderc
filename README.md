@@ -45,7 +45,7 @@ Overall changes/benefits compared to Rev B
 - Shift registers/IO expander IC before relays/darlington transitor arrays -> less pins needed on Cortex
 - Shift registers/IO expander IC before input sense signals -> less pins needed on Cortex
 
-![Board](https://github.com/stamina/easyriderc/raw/master/images/easycomm_topshield.jpg "EasyComm Top Shield")
-![Board](https://github.com/stamina/easyriderc/raw/master/images/easyrelay_bottomshield.jpg "EasyRelay Bottom Shield")
-![Board](https://github.com/stamina/easyriderc/raw/master/images/easyriderc_fullstack.jpg "EasyRider Rev C Full Stack")
+![Board](https://github.com/stamina/easyriderc/raw/main/images/easycomm_topshield.jpg "EasyComm Top Shield")
+![Board](https://github.com/stamina/easyriderc/raw/main/images/easyrelay_bottomshield.jpg "EasyRelay Bottom Shield")
+![Board](https://github.com/stamina/easyriderc/raw/main/images/easyriderc_fullstack.jpg "EasyRider Rev C Full Stack")
 
