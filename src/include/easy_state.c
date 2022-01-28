@@ -28,6 +28,11 @@
   (sizeof(g_transition) / \
    sizeof(*g_transition))  // number of transition table entries
 
+// neutral pending flag, in case no gear1-4 is selected
+uint8_t g_neutral_pending;
+// on/off flag so the buzzer knows when to beep or not
+uint8_t g_indicator_toggle;
+
 // proto's
 uint8_t event_rdy(void);
 uint8_t get_event(void);
@@ -61,8 +66,63 @@ typedef struct {
 } t_transition;
 
 t_transition g_transition[] = {
+    {EV_RESET, 0, 0, (ST_IDLE | ST_ALARM | ST_ACTIVE), 0, 0, 0, NULL,
+     cmd_reset},
+
+    {EV_RI_ON, ST_ACTIVE, 0, 0, 0, (ST_RI | ST_WARNING), 0, NULL, cmd_ri_on},
+    {EV_RI_OFF, ST_ACTIVE, 0, 0, ST_RI, 0, 0, NULL, cmd_ri_off},
+    {EV_RI_TOGGLE, ST_ACTIVE, 0, 0, ST_RI, 0, 0, NULL, cmd_ri_toggle},
+
+    {EV_LI_ON, ST_ACTIVE, 0, 0, 0, (ST_LI | ST_WARNING), 0, NULL, cmd_li_on},
+    {EV_LI_OFF, ST_ACTIVE, 0, 0, ST_LI, 0, 0, NULL, cmd_li_off},
+    {EV_LI_TOGGLE, ST_ACTIVE, 0, 0, ST_LI, 0, 0, NULL, cmd_li_toggle},
+
+    {EV_HAZARD_ON, ST_ACTIVE, 0, 0, 0, (ST_HAZARD), 0, NULL, cmd_hazard_on},
+    {EV_HAZARD_OFF, ST_ACTIVE, 0, 0, ST_HAZARD, 0, 0, NULL, cmd_hazard_off},
+    {EV_HAZARD_TOGGLE, ST_ACTIVE, 0, 0, ST_HAZARD, 0, 0, NULL,
+     cmd_hazard_toggle},
+
+    {EV_CLAXON_ON, ST_ACTIVE, 0, 0, 0, (ST_CLAXON), 0, NULL, cmd_claxon_on},
+    {EV_CLAXON_OFF, ST_ACTIVE, 0, 0, ST_CLAXON, 0, 0, NULL, cmd_claxon_off},
+
+    {EV_BRAKE_ON, ST_ACTIVE, 0, 0, 0, (ST_BRAKE), 0, NULL, cmd_brake_on},
+    {EV_BRAKE_OFF, ST_ACTIVE, 0, 0, ST_BRAKE, 0, 0, NULL, cmd_brake_off},
+
+    {EV_PILOT_ON, ST_ACTIVE, 0, 0, 0, (ST_PILOT), 0, NULL, cmd_pilot_on},
+    {EV_PILOT_OFF, ST_ACTIVE, 0, 0, ST_PILOT, 0, 0, NULL, cmd_pilot_off},
+
+    {EV_LIGHT_ON, ST_ACTIVE, 0, 0, 0, (ST_LIGHT), 0, NULL, cmd_light_on},
+    {EV_LIGHT_OFF, ST_ACTIVE, 0, 0, ST_LIGHT, 0, 0, NULL, cmd_light_off},
+
+    {EV_ALARM_SET_ON, ST_ACTIVE, 0, 0, 0, (ST_ALARM_SET), 0, NULL,
+     cmd_alarm_set_on},
+    {EV_ALARM_SET_OFF, ST_ACTIVE, 0, 0, ST_ALARM_SET, 0, 0, NULL,
+     cmd_alarm_set_off},
+
     {EV_IGN_ON, 0, 0, (ST_IDLE | ST_ALARM), 0, 0, 0, NULL, cmd_ign_on},
-    {EV_IGN_OFF, 0, 0, (ST_ACTIVE), 0, 0, 0, NULL, cmd_ign_off},
+    {EV_IGN_OFF, ST_ACTIVE, 0, 0, 0, 0, 0, NULL, cmd_ign_off},
+
+    {EV_WARNING_ON, ST_ACTIVE, 0, 0, 0, (ST_WARNING), 0, NULL, cmd_warning_on},
+    {EV_WARNING_OFF, ST_ACTIVE, 0, 0, ST_WARNING, 0, 0, NULL, cmd_warning_off},
+    {EV_WARNING_TOGGLE, ST_ACTIVE, 0, 0, ST_WARNING, 0, 0, NULL,
+     cmd_warning_toggle},
+
+    {EV_NEUTRAL_ON, ST_ACTIVE, 0, 0, 0, (ST_NEUTRAL), 0, NULL, cmd_neutral_on},
+    {EV_NEUTRAL_OFF, ST_ACTIVE, 0, 0, ST_NEUTRAL, 0, 0, NULL, cmd_neutral_off},
+
+    {EV_GEAR1_ON, ST_ACTIVE, 0, 0, 0, (ST_GEAR1), 0, NULL, cmd_g1_on},
+    {EV_GEAR1_OFF, ST_ACTIVE, 0, 0, ST_GEAR1, 0, 0, NULL, cmd_g1_off},
+
+    {EV_GEAR2_ON, ST_ACTIVE, 0, 0, 0, (ST_GEAR2), 0, NULL, cmd_g2_on},
+    {EV_GEAR2_OFF, ST_ACTIVE, 0, 0, ST_GEAR2, 0, 0, NULL, cmd_g2_off},
+
+    {EV_GEAR3_ON, ST_ACTIVE, 0, 0, 0, (ST_GEAR3), 0, NULL, cmd_g3_on},
+    {EV_GEAR3_OFF, ST_ACTIVE, 0, 0, ST_GEAR3, 0, 0, NULL, cmd_g3_off},
+
+    {EV_GEAR4_ON, ST_ACTIVE, 0, 0, 0, (ST_GEAR4), 0, NULL, cmd_g4_on},
+    {EV_GEAR4_OFF, ST_ACTIVE, 0, 0, ST_GEAR4, 0, 0, NULL, cmd_g4_off},
+
+    {EV_ALARM_TRIGGER, ST_ALARM, 0, 0, 0, 0, 0, NULL, cmd_alarm_trigger},
 };
 
 t_state_info g_state_info = {ST_IDLE, 0, 0};
@@ -143,7 +203,8 @@ void process_events() {
 #if EASY_DEBUG
         debug_write("Found event!\n");
 #endif
-        // check all guards
+        // check all guards, any "0 condition guard result" will break the loop
+        // and no event handler will be launched
         if (g_transition[i].superstate_mask) {
           if (!check_superstate_mask(g_transition[i].superstate_mask)) break;
         }
@@ -183,4 +244,10 @@ void process_events() {
     }
   }
 }
+
+void set_neutral_pending(uint8_t flag) { g_neutral_pending = flag; }
+uint8_t get_neutral_pending() { return g_neutral_pending; }
+
+void set_indicator_toggle(uint8_t flag) { g_indicator_toggle = flag; }
+uint8_t get_indicator_toggle() { return g_indicator_toggle; }
 

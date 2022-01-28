@@ -20,8 +20,42 @@
 
 #include <libopencm3/cm3/assert.h>
 
+void cmd_reset(void);
+void cmd_alarm_trigger(void);
+void cmd_ri_on(void);
+void cmd_ri_off(void);
+void cmd_ri_toggle(void);
+void cmd_li_on(void);
+void cmd_li_off(void);
+void cmd_li_toggle(void);
+void cmd_hazard_on(void);
+void cmd_hazard_off(void);
+void cmd_hazard_toggle(void);
+void cmd_alarm_set_on(void);
+void cmd_alarm_set_off(void);
+void cmd_warning_on(void);
+void cmd_warning_off(void);
+void cmd_warning_toggle(void);
+void cmd_light_on(void);
+void cmd_light_off(void);
+void cmd_pilot_on(void);
+void cmd_pilot_off(void);
+void cmd_brake_on(void);
+void cmd_brake_off(void);
+void cmd_claxon_on(void);
+void cmd_claxon_off(void);
 void cmd_ign_on(void);
 void cmd_ign_off(void);
+void cmd_g1_on(void);
+void cmd_g1_off(void);
+void cmd_g2_on(void);
+void cmd_g2_off(void);
+void cmd_g3_on(void);
+void cmd_g3_off(void);
+void cmd_g4_on(void);
+void cmd_g4_off(void);
+void cmd_neutral_on(void);
+void cmd_neutral_off(void);
 
 void process_cmds(void);
 

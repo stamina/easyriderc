@@ -29,6 +29,8 @@ void debug_setup() { usart2_setup(); }
 void debug_write(char* str) { usart2_send_str(str); }
 
 // setup little console debug menu
+// which can be used to send opcodes that trigger all events
+// via usart.
 void console_setup() {}
 
 // if NDEBUG is defined, all assertion checks are disabled and macros do not

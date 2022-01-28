@@ -20,12 +20,23 @@
 
 #include <libopencm3/stm32/rcc.h>
 
-typedef enum { LED1_1MS_SLOT, LED2_1MS_SLOT, BUZZ_1MS_SLOT } t_1ms_tick_slot;
-typedef enum { LED1_10MS_SLOT, LED2_10MS_SLOT } t_10ms_tick_slot;
+typedef enum {
+  LED1_1MS_SLOT,
+  LED2_1MS_SLOT,
+  BUZZ_1MS_SLOT,
+  SENSES_1MS_SLOT,
+  RELAYS_1MS_SLOT
+} t_1ms_tick_slot;
+typedef enum {
+  LED1_10MS_SLOT,
+  LED2_10MS_SLOT,
+  INDICATOR_10MS_SLOT
+} t_10ms_tick_slot;
 typedef enum {
   LED1_100MS_SLOT,
   ADC_100MS_SLOT,
-  LED2_100MS_SLOT
+  LED2_100MS_SLOT,
+  NEUTRAL_100MS_SLOT
 } t_100ms_tick_slot;
 typedef enum { LED1_1S_SLOT, LED2_1S_SLOT } t_1s_tick_slot;
 

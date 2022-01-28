@@ -25,4 +25,7 @@ void gpio_setup(void);
 void set_status_led1(uint32_t blinkspd);
 void set_status_led2(uint32_t blinkspd);
 
+void process_senses(void);
+void process_relays(void);
+
 #endif

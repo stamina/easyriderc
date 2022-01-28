@@ -67,8 +67,8 @@
 #define EV_PILOT_OFF 11
 #define EV_LIGHT_ON 12
 #define EV_LIGHT_OFF 13
-#define EV_ALARM_ON 14
-#define EV_ALARM_OFF 15
+#define EV_ALARM_SET_ON 14
+#define EV_ALARM_SET_OFF 15
 #define EV_IGN_ON 16
 #define EV_IGN_OFF 17
 #define EV_WARNING_ON 18
@@ -84,6 +84,12 @@
 #define EV_GEAR4_ON 28
 #define EV_GEAR4_OFF 29
 #define EV_WARNING_TOGGLE 30
+#define EV_RI_TOGGLE 31
+#define EV_LI_TOGGLE 32
+#define EV_HAZARD_ON 33
+#define EV_HAZARD_OFF 34
+#define EV_HAZARD_TOGGLE 35
+#define EV_ALARM_TRIGGER 36
 
 // led statuses
 #define LED1_ST_CONT_ON 1
@@ -103,6 +109,9 @@
 #define LED2_ST_INTERVAL_3_FAST 15
 #define LED2_ST_INTERVAL_3_SLOW 16
 
+#define INDICATOR_TOGGLE_ON 1
+#define INDICATOR_TOGGLE_OFF 0
+
 void init_state(void);
 void process_events(void);
 void set_event(uint8_t ev);
@@ -112,5 +121,9 @@ void set_substate(uint32_t st);
 uint8_t check_superstate(uint8_t st);
 uint32_t check_substate(uint32_t st);
 void remove_substate(uint32_t st);
+void set_neutral_pending(uint8_t flag);
+uint8_t get_neutral_pending(void);
+void set_indicator_toggle(uint8_t flag);
+uint8_t get_indicator_toggle(void);
 
 #endif

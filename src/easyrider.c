@@ -24,6 +24,7 @@
 #include "easy_cmd.h"
 #include "easy_debug.h"
 #include "easy_gpio.h"
+#include "easy_spi.h"
 #include "easy_state.h"
 #include "stdio.h"
 #include "string.h"
@@ -38,9 +39,8 @@ void initialize() {
   init_dma2();
   init_adc();
   init_buzzer();
+  init_spi();
   flush_events();
-  set_event(EV_IGN_ON);
-  set_event(EV_IGN_OFF);
 }
 
 int main(void) {
