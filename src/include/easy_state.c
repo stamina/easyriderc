@@ -65,7 +65,7 @@ typedef struct {
   void (*event_handler)(void);  // cmd to handle the event
 } t_transition;
 
-t_transition g_transition[] = {
+const t_transition g_transition[] = {
     {EV_RESET, 0, 0, (ST_IDLE | ST_ALARM | ST_ACTIVE), 0, 0, 0, NULL,
      cmd_reset},
 

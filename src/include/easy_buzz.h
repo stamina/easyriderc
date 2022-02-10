@@ -32,6 +32,7 @@
 #define BUZZ_SOUND_ALARM 6
 #define BUZZ_SOUND_INDICATOR_HALFSECOND 7
 #define BUZZ_SOUND_INDICATOR_QUARTERSECOND 8
+#define BUZZ_SOUND_PRODIGY 9
 
 void init_buzzer(void);
 void set_buzzer_sound(uint8_t sound_song_idx);

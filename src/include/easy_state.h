@@ -90,6 +90,8 @@
 #define EV_HAZARD_OFF 34
 #define EV_HAZARD_TOGGLE 35
 #define EV_ALARM_TRIGGER 36
+#define EV_ACTIVE_SETTLE_ON 37
+#define EV_ACTIVE_SETTLE_OFF 38
 
 // led statuses
 #define LED1_ST_CONT_ON 1

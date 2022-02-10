@@ -178,7 +178,7 @@ void setup_relays() {
   mcp_internal_reg[MCP_IPOLB] = 0x00;
   // no interrupts, since we're only using outputs
   mcp_internal_reg[MCP_GPINTENA] = 0x00;
-  mcp_internal_reg[MCP_GPINTENB] = 0x00FF;
+  mcp_internal_reg[MCP_GPINTENB] = 0x00;
   // no interrupt compare value registers
   mcp_internal_reg[MCP_DEFVALA] = 0x00;
   mcp_internal_reg[MCP_DEFVALB] = 0x00;
@@ -253,7 +253,7 @@ uint8_t read_relay(uint8_t reg) {
 void write_relay(uint8_t pin, uint8_t value) {
   uint8_t bt;
   uint8_t reg = MCP_OLATA;
-  if (pin > 8) {
+  if (pin > 7) {
     pin -= 8;
     reg = MCP_OLATB;
   }

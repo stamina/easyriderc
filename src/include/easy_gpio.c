@@ -19,13 +19,15 @@
 
 #include "easy_buzz.h"
 #include "easy_clock.h"
+#include "easy_debug.h"
 #include "easy_spi.h"
 #include "easy_state.h"
+#include "stdio.h"
 
 // portA
-#define S_XTRA3 1
-#define S_XTRA2 2
-#define S_XTRA1 4
+#define S_XTRA3 1  // future use
+#define S_XTRA2 2  // future use
+#define S_XTRA1 4  // used to calibrate/zero out IMU values
 #define S_ALARM 8
 #define S_WARNING 16
 #define S_IGNITION 32
@@ -51,8 +53,6 @@ uint8_t g_senses_debounce_pending;
 uint8_t g_relays_debounce_pending;
 uint8_t g_cur_sense_gpio_a;
 uint8_t g_cur_sense_gpio_b;
-uint8_t g_cur_sense_capture_a;
-uint8_t g_cur_sense_capture_b;
 
 // proto's
 void dispatch_senses(void);
@@ -66,13 +66,16 @@ void gpio_setup() {
   gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO7);
   gpio_mode_setup(GPIOC, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO12);
   // interrupt pin SENSES PB1 and interrupt pin RELAYS PB15
-  // NOTE: since the RELAYS I/O expander is set only outputs, we're not
+  // NOTE: since the RELAYS I/O expander is set only with output pins, we're not
   // using PB15 atm (XTRA4 and XTRA5 are not used and can be configured
-  // as inputs later on)
+  // as inputs later on: future use)
   gpio_mode_setup(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO1 | GPIO15);
 }
 
 void dispatch_senses() {
+#if EASY_DEBUG
+  debug_write("DISPATCH EVENTS\n");
+#endif
   // NOTE: S_XTRA1-3 are not used atm, these pins are for future senses
   // pin == 1, means sense is OFF, pin == 0, means sense is ON (pulled down)
   (g_cur_sense_gpio_a & S_ALARM) ? set_event(EV_ALARM_SET_OFF)
@@ -108,20 +111,26 @@ void process_senses() {
   // read both GPIO ports 5 times in a row with 5ms delta's
   // compare them to the INT capture ports
   if (gpio_get(GPIOB, GPIO1)) {
+#if EASY_DEBUG
+    char buf[255];
+    snprintf(buf, 255, "SENSE INT CAPTURE PORT A/B: %d %d\n",
+             read_sense_capture_a(), read_sense_capture_b());
+    debug_write(buf);
+#endif
+    g_cur_sense_gpio_a = read_sense_port_a();
+    g_cur_sense_gpio_b = read_sense_port_b();
     g_senses_debounce_pending = 1;
     g_senses_checks = SENSE_DEBOUNCE_CHECKS;
-    g_cur_sense_capture_a = read_sense_capture_a();
-    g_cur_sense_capture_b = read_sense_capture_b();
   }
   if (g_senses_debounce_pending) {
     if (g_senses_checks) {                        // debouncing checks
       if (!get_1ms_tick_slot(SENSES_1MS_SLOT)) {  // 5ms passed
-        g_cur_sense_gpio_a = read_sense_port_a();
-        g_cur_sense_gpio_b = read_sense_port_b();
         // current GPIO not equal anymore -> noise bounce
         // bailout with no senses events dispatched
-        if ((g_cur_sense_gpio_a != g_cur_sense_capture_a) ||
-            (g_cur_sense_gpio_b != g_cur_sense_capture_b)) {
+        // NOTE: this noise bounce would retrigger an interrupt
+        // so we automatically restart the checks again
+        if ((g_cur_sense_gpio_a != read_sense_port_a()) ||
+            (g_cur_sense_gpio_b != read_sense_port_b())) {
           g_senses_debounce_pending = 0;
         } else {
           g_senses_checks--;
@@ -138,6 +147,8 @@ void process_senses() {
   // check for neutral, which doesn't have its own sense wire, but should be
   // activated when the gear1-4 substates are all off.
   check_neutral();
+  // TODO: check_active_settle()
+  // check the tick_slot for active_settle and cast a EV_ACTIVE_SETTLE_OFF
 }
 
 void check_neutral() {
@@ -152,8 +163,6 @@ void check_neutral() {
     }
   }
 }
-
-void process_relays() {}
 
 void set_status_led1(uint32_t blinkspd) {
   if (blinkspd) {

@@ -103,7 +103,7 @@ void start_adc_conversion() {
   adc_start_conversion_regular(ADC1);
   // reinit dma2, else we don't get a new conversion
   init_dma2();
-#if EASY_DEBUG
+#if EASY_DEBUG_OFF
   char buf[255];
   snprintf(buf, 255, "adc[0-2]: %d %d %d\n", g_adc_results[0], g_adc_results[1],
            g_adc_results[2]);

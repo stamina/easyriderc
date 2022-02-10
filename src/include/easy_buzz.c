@@ -27,6 +27,7 @@
 #include "sound/larry.h"
 #include "sound/pipi.h"
 #include "sound/popcorn.h"
+#include "sound/prodigy.h"
 #include "stdio.h"
 
 void set_buzzer_period_duty(uint16_t arr_period, uint16_t oc2_duty);
@@ -104,6 +105,9 @@ void set_buzzer_sound(uint8_t sound_song_idx) {
       break;
     case BUZZ_SOUND_INDICATOR_QUARTERSECOND:
       current_sound.notes = g_indicator_quarter;
+      break;
+    case BUZZ_SOUND_PRODIGY:
+      current_sound.notes = g_music_prodigy;
       break;
     default:
 #if EASY_DEBUG

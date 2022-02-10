@@ -21,6 +21,7 @@
 #include <libopencm3/cm3/assert.h>
 
 #define EASY_DEBUG 1
+#define EASY_DEBUG_OFF 0
 
 void debug_setup(void);
 void debug_write(char *str);
