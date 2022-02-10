@@ -76,10 +76,10 @@ Max power consumption board
   [X] STM32F446 MCU               -> 3.3v rail    ~100 mA max
   [X] Bluetooth LE                -> 3.3v rail     ~10 mA max
   [X] GPS                         -> 3.3v rail     ~30 mA max
-  [X] Relay switching             -> 5v rail      ~350 mA max
-  [X] Gyro / Accelerometer        -> 3.3v rail        3mA max
+  [X] Relay switching             -> 5v rail      ~250 mA max
+  [X] Gyro / Accelerometer        -> 3.3v rail       ~3mA max
                                                    ----------
-                                                  ~500 mA max
+                                                  ~400 mA max
 Max power consumption relays
 ----------------------------
 
@@ -126,15 +126,13 @@ TODO/Functionality
 [ ] Test VBAT functionality:
     [ ] RTC/LSE osc data
     [ ] RTC registers/RTC backup registers  
-    [ ] Backup SRAM for settings
-    [ ] PC13 (blue btn default connection) for future wakeup/sleep functionality
-[ ] Set all "F" (Unused pins) to Output push-pull and set internal pull-down
-[ ] I/O expanders over SPI1 (EXTI interrupt handling)
+[ ] Set all "F" (Free Unused pins) to Output push-pull and set internal pull-down
+[X] I/O expanders over SPI1 (EXTI interrupt handling)
 [ ] Implement watchdog timer, which reset the MCU on (assert) hangs
     -> Window watchdog? this one can be frozen while debugging
-[ ] New DEBOUNCE algorithm to handle all 2x 16 pins together in a buffer
-    [ ] Multiple reads after incoming interrupts
-[ ] Buzzer sounds
+[X] New DEBOUNCE algorithm to handle all 2x 16 pins together in a buffer
+    [X] Multiple reads after incoming interrupts, 5ms apart
+[X] Buzzer sounds
 [ ] Bluetooth communication
 [ ] GPS communication
 [ ] IMU communication
@@ -143,13 +141,15 @@ TODO/Functionality
     activate hazard mode on (brake + light + indicators + claxon turn quickly on/off
     for 3 times as a warning)
 [ ] Ignition on -> transition from IDLE to ACTIVE: some startup buzzer sounds and all relay lights on
-[ ] Ignition off -> transition from ACTIVE to IDLE: some buzzer sounds to notify of Engine off
+  [ ] ST_ACTIVE_SETTLE substate: startup sound and lights on, some HW checkups
+[ ] Ignition off -> transition from ACTIVE to IDLE: some buzzer sounds to notify of Engine off, or
+    from ACTIVE to ALARM when ALARM_SET substate is set: also a buzzer sound
 [ ] Logging -> on State Changes and/or 10 times per second gps/imu/stats dump,
     throttle it in SRAM to be exact 10 rows/s, then write it to Winbond Flash
 [ ] Logging -> Log "records" to backup SRAM, besides settings:
     max RPM, max SPEED, max deaccel/accel (G's), time to deaccel/accel to 60/80/100km/h,
     longest active/idle time in sec
-
+[ ] Use S_XTRA1 to calibrate/zero out IMU values
 
 General Event/Control System
 ----------------------------
@@ -161,8 +161,9 @@ General Event/Control System
     -> dispatches the whole event queue.
     -> runs the guard functions and launches the correct cmds
 [ ] One process_cmds function in the super loop:
-    -> checks HW senses states, by reacting to I/O expander ISR's
-    -> does the debouncing algorithm for these ports
+    -> checks HW senses states, by reacting to I/O expander interrupts on pin
+    changes
+    -> does the software debouncing algorithm for these ports
     -> fires HW events
     -> fires timed events based on current states (e.g. toggle warning lights,
     buzzer sounds)
@@ -177,10 +178,8 @@ General Event/Control System
 [X] Only event handlers (cmds) can change state
 [X] Flush event pipeline function, event on and off handlers
 [X] Guard checks, event triggers and dispatch handlers  
-[X] HW/SW control uses the same events
+[X] HW/SW control uses the same events, e.g. they can block/overwrite eachother naturally.
 [X] Make a fixed "const" state/guard/dispatch table
-[ ] I/O expander interrupt handlers use 2 byte buffers (16 pins) to save and
-    check the state
 
 - 30 total pins (2x Mini-Lock Wire-to-Board Connectors, NOTE: 1A per pin max!):
   - 15: RPM sense, all 13 switch senses and 1 RESERVE
@@ -328,21 +327,21 @@ STATUS1 -> PC7
 BUZZER: PWM on PB7
 
 ADC readouts:
- [ ] VBAT pin (3v CR1225)
- [ ] Current sensor (200mV/A readout)
- [ ] 12V Battery
+ [X] VBAT pin (3v CR1225)
+ [X] Current sensor (200mV/A readout)
+ [X] 12V Battery
 
 EasyRelay board
 ---------------
 12x Meder relays
  [X] Keep 5mm distance between them, both axis
 2x MCP23S17 16-Bit SPI I/O Expander with SPI interface
- [ ] maximum 10Mhz SPI 
+ [X] maximum 10Mhz SPI 
  [X] route remaining I/O pins to 7x "NC" MORPHO pins for the EasyComm connector
 2x ULN2003 darlington relay drivers
 1x 12V -> 5V Switching regulator circuit
 1x RPM sense circuit
-  [ ] connect output pulse to a COUNTER/INT PIN
+  [X] connect output pulse to a COUNTER/INT PIN
 3v3 LDO regulator circuit (NOTE: big connection tab is Vout, not GND!)
 Hall effect current sensor
 
@@ -352,20 +351,68 @@ is evenly:
 1 -> PILOT, COCKPIT IND, BRAKE, RI's, CLAXON
 2 -> BACK LIGHT, COCKPIT STATUS, LI's
 
-NOTE: split the 12V and GND into 2 pairs each: 1 for high current claxon, 1 for other relays 
+NOTE: split the 12V and GND into 2 pairs each: 1 rails for 12v relays and 1
+for all other IC's
 
 External VBat 3V cr1225 -> 
   to ARM for rtc and 4K SRAM backup
   to GPS for sleep, warm instead of cold start
 
-[ ] Vbat voltage readout by ADC
+[X] Vbat voltage readout by ADC
 
 The voltage divider should be < 0.2x VBat ratio, so that even 
   a charging battery at 15V will keep the ADC Vin below 3.3V.
   100K - 20K resistors should be fine
 
-[ ] Hall effect current sensor readout by ADC
-  [ ] 200 mV/A
+[X] Hall effect current sensor readout by ADC
+  [X] 200 mV/A
+
+Connector wires
+---------------
+
+SENSES (numbers from right to left)
+
+Molex
+[1]     S_XTRA1    light green
+[2]     S_ALARM    pink
+[3]     S_WARNING  dark green 
+[4]     S_IGN      blue
+[5]     S_LIGHT    orange-black
+[6]     S_PILOT    yellow
+[7]     S_CLAXON   white
+[8]     S_RI       orange
+[9]     S_LI       green-black
+[10]    S_BRAKE    yellow-black
+[11]    S_G1       grey
+[12]    S_G2       purple
+[13]    S_G3       brown
+[14]    S_G4       red
+[15]    S_RPM      black 
+
+
+Screwterminal (numbers from right to left)
+[1]     12V        red  
+[2]     GND        black
+[3]     R_CLAXON   white  
+
+RELAYS (numbers from right to left)
+
+Molex
+[1]     GND        black
+[2]     12V        red
+[3]     R_XTRA1    brown
+[4]     R_PITSTA   purple
+[5]     R_PITIND   grey
+[6]     R_BRAKE    yellow-black
+[7]     R_RIF      green-black
+[8]     R_XTRA3    orange
+[9]     R_XTRA2    white
+[10]    R_PILOT    yellow
+[11]    R_LIB      orange-black
+[12]    R_LIF      blue
+[13]    R_RIB      dark green
+[14]    R_LIGHT    pink 
+[15]    J_XTRA     light green (attached to loose jumper pin)
 
 EasyComm board
 --------------
